@@ -10,7 +10,6 @@ class InformationController extends Controller
 {
    public function index()
    {
-
      $childinfos=Childinfo::all();
      return view('childinfo',compact('childinfos'));
    }
@@ -31,11 +30,10 @@ class InformationController extends Controller
             'childlastname'=>'required|string|alpha',
             'childage'=>'required|numeric',
             'gender'=>['required', Rule::in(['Male', 'Female', 'Other'])],
-            'childaddress'=>'required_if:differentaddress,==,1|alpha_num',
-            'childcity'=>'alpha_num|required_if:differentaddress,1',
-            'childstate'=>'required_if:differentaddress,1|alpha_num',
-            'childzipcode'=>'required_if:differentaddress,1|numeric',
-            'country'=>'required_if:differentaddress,1'
+            'childaddress'=>'alpha_num',
+            'childcity'=>'alpha_num',
+            'childstate'=>'alpha_num',
+            'childzipcode'=>'numeric'
 
         ]
         );
@@ -75,12 +73,11 @@ class InformationController extends Controller
              'childlastname'=>'required|string|alpha',
              'childage'=>'required|numeric',
              'gender'=>['required', Rule::in(['Male', 'Female', 'Other'])],
-             'childaddress'=>'required_if:differentaddress,==,1|alpha_num',
-               'childcity'=>'alpha_num|required_if:differentaddress,1',
-               'childstate'=>'required_if:differentaddress,1|alpha_num',
-               'childzipcode'=>'required_if:differentaddress,1|numeric',
-               'country'=>'required_if:differentaddress,1'
-   
+             'childaddress'=>'alpha_num',
+             'childcity'=>'alpha_num',
+             'childstate'=>'alpha_num',
+             'childzipcode'=>'numeric'
+ 
  
          ]
          );
