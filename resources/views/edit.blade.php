@@ -56,35 +56,6 @@
                 </tr>
                </thead>
 
-
-{{-- <tbody>
-
-        @foreach($childinfos as $childinfo)
-        
-        
-            <tr>
-                <td class="column1"> 
-                     <a href="{{ route('delete', ['id' => $childinfo->id]) }}"><button class="btn-danger">Delete</button></a>
-                     <a href="{{ route('edit', ['id' => $childinfo->id]) }}"><button class="btn-success">Edit</button></a> 
-                </td>
-                <td class="column2">{{ $childinfo->firstname }}</td>
-                <td class="column3">{{ $childinfo->middlename }}</td>
-                <td class="column4">{{ $childinfo->lastname  }}</td>
-                <td class="column5">{{ $childinfo->age }}</td>
-                <td class="column6">{{ $childinfo->gender }}</td>
-                <td class="column7">{{ $childinfo->differentaddress ? 'Yes' : 'No' }}</td>
-                <td class="column8">{{ $childinfo->country }}</td>
-                <td class="column9">{{ $childinfo->address }}</td>
-                <td class="column10">{{ $childinfo->city }}</td>
-                <td class="column11">{{ $childinfo->state }}</td> 
-                <td class="column12">{{ $childinfo->zipcode }}</td>
-                
-            </tr>
-
-        @endforeach --}}
-
-{{-- FOR UPDATEEEE --}}
-
 <form action="{{ url('/update/'.$childinfo->id) }}" method="POST">
 
 @csrf    
@@ -419,12 +390,18 @@
             "ZW" => "Zimbabwe",
             "AX" => "Åland Islands",
             );
-            foreach ($countryList as $list => $country)
-               {
-                echo "<option value='$country' {{ $childinfo->country == '$country' ? 'selected' : '' }}>$country</option>";
-                }
             ?>
-            </select>       
+            @foreach ($countryList as $list => $country)
+               {
+              <option value={{ $country }} {{ $childinfo->country == $country ? 'selected' : '' }}>{{  $country}}</option>
+                }
+           @endforeach
+            </select>  
+            <span class="text-danger"> 
+                @error('country')
+                {{ $message }} 
+                @enderror  
+            </span>     
 
     </td>
     <td class="column9">

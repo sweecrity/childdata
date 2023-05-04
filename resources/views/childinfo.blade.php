@@ -28,7 +28,7 @@
 
 <div class="main-content">
 
-  <h1 class="text-center">Child Informations</h1>
+  <h1 class="text-center">Child Informations </h1>
    <hr />
 
 
@@ -416,14 +416,24 @@
             "ZW" => "Zimbabwe",
             "AX" => "Åland Islands",
             );
-            foreach ($countryList as $list => $country) {
-                echo "<option value='$country' {{ old('country') == '$country' ? 'selected' : '' }} >$country</option>";
-                }
             ?>
+            @foreach ($countryList as $list => $country) {
+               
+                <option value={{ $country }} {{   old('country') == $country ? 'selected' : '' }} >{{ $country  }}</option>
+                }
+           @endforeach
             </select>
+            <span class="text-danger"> 
+                @error('country')
+                {{ $message }} 
+                @enderror  
+            </span> 
             
 
         </td>
+         
+      
+        
         <td class="column9">
             <input type="text"  name="childaddress" placeholder="Child Address" id="childaddress" value="{{ old('childaddress') }}" />
                 <span class="text-danger"> 
@@ -484,20 +494,20 @@
     });
 
     function updateFormFields(differentAddress) {
-        if(differentAddress) {
-            $('#childaddress').prop('disabled', false).prop('required','true');
-            $('#childcity').prop('disabled', false).prop('required','true');
-            $('#childstate').prop('disabled', false).prop('required','true');
-            $('#childzipcode').prop('disabled', false).prop('required','true');
-            $('#country').prop('disabled', false).prop('required','true');
-        } 
-        else {
+            if(differentAddress) {
+                $('#childaddress').prop('disabled', false).prop('required','true');
+                $('#childcity').prop('disabled', false).prop('required','true');
+                $('#childstate').prop('disabled', false).prop('required','true');
+                $('#childzipcode').prop('disabled', false).prop('required','true');
+                $('#country').prop('disabled', false).prop('required','true');
+            } 
+            else {
                 $('#childaddress').prop('disabled', true).prop('required','false');
                 $('#childcity').prop('disabled', true).prop('required','false');
                 $('#childstate').prop('disabled', true).prop('required','false');
                 $('#childzipcode').prop('disabled', true).prop('required','false');
                 $('#country').prop('disabled', true).prop('required','false');
-        }
+            }
     }
 });
 
