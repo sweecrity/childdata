@@ -150,10 +150,8 @@
                 <input type="checkbox"  name="differentaddress" id="differentaddress"{{ $childinfo->differentaddress ? 'checked' : '' }} />
     </td>
     <td class="column8" >
-      
-    
         <select id="country" name="country" style="width:80px;">
-            <option value=""> country </option>
+         <option value=""> country </option>
             <?php
             $countryList = array(
             "AF" => "Afghanistan",
@@ -421,11 +419,12 @@
             "ZW" => "Zimbabwe",
             "AX" => "Åland Islands",
             );
-            foreach ($countryList as $list => $country) {
+            foreach ($countryList as $list => $country)
+               {
                 echo "<option value='$country' {{ $childinfo->country == '$country' ? 'selected' : '' }}>$country</option>";
                 }
             ?>
-            </select>
+            </select>       
 
     </td>
     <td class="column9">
@@ -472,9 +471,7 @@
 </form>
 </table>
 
-<div class="text-center">
-    <button class="btn-success" id="addbutton">Add New</button>
-    </div>
+
     
     <script>
        $(document).ready(function() {
