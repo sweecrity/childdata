@@ -419,11 +419,12 @@
             "ZW" => "Zimbabwe",
             "AX" => "Åland Islands",
             );
-            foreach ($countryList as $list => $country)
-               {
-                echo "<option value='$country' {{ $childinfo->country == '$country' ? 'selected' : '' }}>$country</option>";
-                }
             ?>
+            @foreach ($countryList as $list => $country) 
+            {
+                <option value={{ $country }} {{$childinfo->country == $country ? 'selected' : '' }} >{{  $country}}</option>
+                }
+           @endforeach
             </select>       
 
     </td>
